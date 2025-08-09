@@ -25,7 +25,7 @@ env:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     steps:
       - uses: actions/checkout@v3
         with:
@@ -75,7 +75,7 @@ jobs:
           image_tag="${{ steps.build.outputs.docker_tag }}"
           docker push "$image_tag"
 
-          latest_tag="ghcr.io/coder/wgtunnel/tunneld:latest"
+          latest_tag="ghcr.io/rodriguezst/wgtunnel/tunneld:latest"
           docker tag "$image_tag" "$latest_tag"
           docker push "$latest_tag"
 
