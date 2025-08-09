@@ -47,7 +47,7 @@ build/tunneld build/tunnel: build/%: $(shell find . -type f -name '*.go')
 build/tunneld.tag: build/tunneld
 	# Dev versions contain plus signs which are illegal in Docker tags.
 	version="$(VERSION)"
-	tag="ghcr.io/coder/wgtunnel/tunneld:$${version//+/-}"
+	tag="ghcr.io/rodriguezst/wgtunnel/tunneld:$${version//+/-}"
 
 	docker build \
 		--file Dockerfile \
