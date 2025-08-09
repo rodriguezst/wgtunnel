@@ -40,7 +40,7 @@ build/tunneld build/tunnel: build/%: $(shell find . -type f -name '*.go')
 	CGO_ENABLED=0 go build \
 		-o "$@" \
 		-tags urfave_cli_no_docs \
-		-ldflags "-s -w -X 'github.com/coder/wgtunnel/buildinfo.tag=$(VERSION)'" \
+		-ldflags "-s -w -X 'github.com/rodriguezst/wgtunnel/buildinfo.tag=$(VERSION)'" \
 		"./cmd/$*"
 
 # build/tunneld.tag generates the Docker image for tunneld.
