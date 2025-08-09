@@ -40,14 +40,14 @@ build/tunneld build/tunnel: build/%: $(shell find . -type f -name '*.go')
 	CGO_ENABLED=0 go build \
 		-o "$@" \
 		-tags urfave_cli_no_docs \
-		-ldflags "-s -w -X 'github.com/coder/wgtunnel/buildinfo.tag=$(VERSION)'" \
+		-ldflags "-s -w -X 'github.com/rodriguezst/wgtunnel/buildinfo.tag=$(VERSION)'" \
 		"./cmd/$*"
 
 # build/tunneld.tag generates the Docker image for tunneld.
 build/tunneld.tag: build/tunneld
 	# Dev versions contain plus signs which are illegal in Docker tags.
 	version="$(VERSION)"
-	tag="ghcr.io/coder/wgtunnel/tunneld:$${version//+/-}"
+	tag="ghcr.io/rodriguezst/wgtunnel/tunneld:$${version//+/-}"
 
 	docker build \
 		--file Dockerfile \

@@ -13,6 +13,16 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
+# Helper functions for logging
+log() {
+	echo "$@" >&2
+}
+
+error() {
+	log "$@"
+	exit 1
+}
+
 if [[ "${WGTUNNEL_FORCE_VERSION:-}" != "" ]]; then
 	echo "$WGTUNNEL_FORCE_VERSION"
 	exit 0
